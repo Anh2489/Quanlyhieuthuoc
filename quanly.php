@@ -40,18 +40,25 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
         <div class="menu-title">DANH MỤC</div>
         <div class="menu-group">
             <a class="<?php echo $currentPage=='quan-ly-dm'?'active':''?>" href="quanly.php?page=quan-ly-dm">Danh mục sản phẩm</a>
-            <a class="<?php echo $currentPage=='phieu-nhap'?'active':''?>" href="quanly.php?page=phieu-nhap">Nhập hàng</a>
             <a class="<?php echo $currentPage=='nha-cung-cap'?'active':''?>" href="quanly.php?page=nha-cung-cap">Nhà cung cấp</a>
             <a class="<?php echo $currentPage=='khach-hang'?'active':''?>" href="quanly.php?page=khach-hang">Khách hàng</a>
+        </div>
+        <div class="menu-title">NHẬP - KHO</div>
+        <div class="menu-group">
+            <a class="<?php echo $currentPage=='phieu-nhap'?'active':''?>" href="quanly.php?page=phieu-nhap">Nhập hàng</a>
+            <a class="<?php echo $currentPage=='quan-ly-kho'?'active':''?>" href="quanly.php?page=quan-ly-kho">Quản lý kho</a>
         </div>
         <div class="menu-title">BÁN HÀNG</div>
         <div class="menu-group">
             <a class="<?php echo $currentPage=='ban-hang'?'active':''?>" href="quanly.php?page=ban-hang">Hoá đơn</a>
             <a class="<?php echo $currentPage=='giao-dich'?'active':''?>" href="quanly.php?page=giao-dich">Tra cứu giao dịch</a>
         </div>
-        <div class="menu-title">QUẢN LÝ</div>
+        <div class="menu-title">THỐNG KÊ</div>
         <div class="menu-group">
-            <a class="<?php echo $currentPage=='quan-ly-kho'?'active':''?>" href="quanly.php?page=quan-ly-kho">Quản lý kho</a>
+            <a class="<?php echo $currentPage=='doanh-thu'?'active':''?>" href="quanly.php?page=doanh-thu">Doanh thu</a>
+            <a class="<?php echo $currentPage=='thu-chi'?'active':''?>" href="quanly.php?page=thu-chi">Thu chi</a>
+            <a class="<?php echo $currentPage=='hang-ton'?'active':''?>" href="quanly.php?page=hang-ton">Tồn kho</a>
+
         </div>
     </nav>
     <main class="main-content">
@@ -62,12 +69,15 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
             switch ($_GET['page']) {
                 case "trang-chu": include("trang-chu.php"); break;
                 case "quan-ly-dm": include("quan-ly-dm.php"); break;
-                case "phieu-nhap": include("phieu-nhap.php"); break;
                 case "nha-cung-cap": include("nha-cung-cap.php"); break;
                 case "khach-hang": include("khach-hang.php"); break;
+                case "phieu-nhap": include("phieu-nhap.php"); break; 
+                case "quan-ly-kho": include("quan-ly-kho.php"); break;
                 case "hoa-don": include("hoa-don.php"); break;
                 case "giao-dich": include("giao-dich.php"); break;
-                case "quan-ly-kho": include("quan-ly-kho.php"); break;
+                case "doanh-thu": include("doanh-thu.php"); break;
+                case "thu-chi": include("thu-chi.php"); break;
+                case "hang-ton": include("hang-ton.php"); break;
                 case "thong-tin-cn": include("thong-tin-cn.php");break;
                 case "doi-mat-khau": include("doi-mat-khau.php");break;
                 case "logout":
@@ -84,23 +94,6 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
 </div>
 
 <script>
-// Mở/đóng setting khi click
-// document.querySelectorAll('.menu-title').forEach(function(title){
-//     title.addEventListener('click', function(){
-//         title.classList.toggle('open');
-//         const group = title.nextElementSibling;
-//         group.style.display = (group.style.display === 'flex') ? 'none' : 'flex';
-//     });
-// });
-
-// // Mở nhóm chứa mục đang active khi load
-// const activeLink = document.querySelector('.menu-group a.active');
-// if(activeLink){
-//     const group = activeLink.closest('.menu-group');
-//     group.style.display = 'flex';
-//     group.previousElementSibling.classList.add('open');
-// }
-// Đóng mở setting
 const setting = document.querySelector('.setting');
 const settingBtn = document.querySelector('.setting-btn');
 const settingMenu = document.querySelector('.setting-menu');

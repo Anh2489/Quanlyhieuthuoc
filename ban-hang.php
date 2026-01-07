@@ -61,7 +61,7 @@ if(isset($_POST['action']) && $_POST['action']=='luu'){
 ?>
 
 <div class="page-header" style="margin-bottom: 0;">
-    <h1>Hệ thống Bán lẻ Thuốc</h1>
+    <h1>Bán hàng</h1>
 </div>
 
 <div class="pos-container">
@@ -210,4 +210,5 @@ document.getElementById("search").onkeyup = function(){
         i.style.display = i.innerText.toLowerCase().includes(k) ? '' : 'none';
     });
 }
+
 </script>

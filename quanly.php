@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quản lý hiệu thuốc</title>
 <link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="css.css">
 </head>
 <body>
 <?php
@@ -20,13 +21,15 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
         <div class="logo">
             <span>Hệ Thống Quản Lý Hiệu Thuốc</span>
         </div>
-        <div class="setting">
-            <button class="setting-btn">⚙️ Cài đặt</button>
-            <div class="setting-menu">
-                <a href="quanly.php?page=thong-tin-cn">Thông tin cá nhân</a>
-                <a href="quanly.php?page=doi-mat-khau">Đổi mật khẩu</a>
-                <a href="logout.php" class="logout-btn">Đăng xuất</a>
-             </div>
+        <div class="header-right">
+            <a href="quanly.php?page=ban-hang" class="ban-btn">BÁN HÀNG</a> 
+            <div class="setting">
+                <button class="setting-btn">⚙️</button>
+                <div class="setting-menu">
+                    <a href="quanly.php?page=doi-mat-khau">Đổi mật khẩu</a>
+                    <a href="logout.php" class="logout-btn">Đăng xuất</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -37,9 +40,11 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
         <div class="menu-group">
             <a class="<?php echo $currentPage=='trang-chu'?'active':''?>" href="quanly.php?page=trang-chu">Trang chủ</a>
         </div>
-        <div class="menu-title">DANH MỤC</div>
+        <div class="menu-title">DANH SÁCH</div>
         <div class="menu-group">
-            <a class="<?php echo $currentPage=='quan-ly-dm'?'active':''?>" href="quanly.php?page=quan-ly-dm">Danh mục sản phẩm</a>
+            <a class="<?php echo $currentPage=='quan-ly-dm'?'active':''?>" href="quanly.php?page=quan-ly-dm">Danh mục</a>
+            <a class="<?php echo $currentPage=='quan-ly-sp'?'active':''?>" href="quanly.php?page=quan-ly-sp">Sản phẩm</a>
+            <a class="<?php echo $currentPage=='hoa-don'?'active':''?>" href="quanly.php?page=hoa-don">Hoá đơn</a>
             <a class="<?php echo $currentPage=='nha-cung-cap'?'active':''?>" href="quanly.php?page=nha-cung-cap">Nhà cung cấp</a>
             <a class="<?php echo $currentPage=='khach-hang'?'active':''?>" href="quanly.php?page=khach-hang">Khách hàng</a>
         </div>
@@ -48,17 +53,10 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
             <a class="<?php echo $currentPage=='phieu-nhap'?'active':''?>" href="quanly.php?page=phieu-nhap">Nhập hàng</a>
             <a class="<?php echo $currentPage=='quan-ly-kho'?'active':''?>" href="quanly.php?page=quan-ly-kho">Quản lý kho</a>
         </div>
-        <div class="menu-title">BÁN HÀNG</div>
-        <div class="menu-group">
-            <a class="<?php echo $currentPage=='ban-hang'?'active':''?>" href="quanly.php?page=ban-hang">Hoá đơn</a>
-            <a class="<?php echo $currentPage=='giao-dich'?'active':''?>" href="quanly.php?page=giao-dich">Tra cứu giao dịch</a>
-        </div>
-        <div class="menu-title">THỐNG KÊ</div>
+        <div class="menu-title">BÁO CÁO</div>
         <div class="menu-group">
             <a class="<?php echo $currentPage=='doanh-thu'?'active':''?>" href="quanly.php?page=doanh-thu">Doanh thu</a>
-            <a class="<?php echo $currentPage=='thu-chi'?'active':''?>" href="quanly.php?page=thu-chi">Thu chi</a>
-            <a class="<?php echo $currentPage=='hang-ton'?'active':''?>" href="quanly.php?page=hang-ton">Tồn kho</a>
-
+            <a class="<?php echo $currentPage=='loi-nhuan'?'active':''?>" href="quanly.php?page=loi-nhuan">Lợi nhuận</a>
         </div>
     </nav>
     <main class="main-content">
@@ -67,8 +65,10 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
             include("trang-chu.php");
         } else {
             switch ($_GET['page']) {
+                case "ban-hang": include("ban-hang.php"); break;
                 case "trang-chu": include("trang-chu.php"); break;
                 case "quan-ly-dm": include("quan-ly-dm.php"); break;
+                case "quan-ly-sp": include("quan-ly-sp.php"); break;
                 case "nha-cung-cap": include("nha-cung-cap.php"); break;
                 case "khach-hang": include("khach-hang.php"); break;
                 case "phieu-nhap": include("phieu-nhap.php"); break; 
@@ -76,8 +76,7 @@ $currentPage = $_GET['page'] ?? 'trang-chu';
                 case "hoa-don": include("hoa-don.php"); break;
                 case "giao-dich": include("giao-dich.php"); break;
                 case "doanh-thu": include("doanh-thu.php"); break;
-                case "thu-chi": include("thu-chi.php"); break;
-                case "hang-ton": include("hang-ton.php"); break;
+                case "loi-nhuan": include("loi-nhuan.php"); break;
                 case "thong-tin-cn": include("thong-tin-cn.php");break;
                 case "doi-mat-khau": include("doi-mat-khau.php");break;
                 case "logout":
